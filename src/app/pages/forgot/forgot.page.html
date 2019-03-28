@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-button [routerLink]="['/login']" fill="clear" color="light"style="font-size: smaller">
+        取消
+      </ion-button>
+    </ion-buttons>
+    <ion-title align="center" style="color: white;">忘记密码</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <form  #codeForm="ngForm" novalidate (ngSubmit)="onInputCode()">
+    <ion-item style="font-size: small;width: 100%">
+      <ion-label >手机号</ion-label>
+      <ion-input name="phone" type="number" placeholder="请输入您的手机号码" [(ngModel)]="params.usertel" #phone="ngModel" pattern="^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,3,5-9]))\d{8}$" required></ion-input>
+    </ion-item>
+    <ion-item style="font-size: small;width: 100%">
+      <ion-label >验证码</ion-label>
+      <ion-input name="validCode" type="number" placeholder="请输入验证码" [(ngModel)]="params.vcode" required></ion-input>
+      <ion-button style="font-size: smaller" [disabled]="!verifyCode.disable||phone.errors?.pattern" (click)="getCode()" >{{verifyCode.verifyCodeTips}}</ion-button>
+    </ion-item>
+
+    <ion-item style="font-size: small;width: 100%">
+      <ion-label>密&nbsp;&nbsp;&nbsp;码</ion-label>
+      <ion-input name="password" type="password" [(ngModel)]="params.newpass"  #password="ngModel" placeholder="请输入新密码" pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" text-left *ngIf=" password.touched||submited ">
+      <h6 [hidden]="!password.errors?.required"><small>密码不能为空</small></h6>
+      <h6 *ngIf="password.errors?.pattern"><small>长度至少为6个字符<br/>包含至少1个大写字母、1个小写字母、1个数字、1个特殊字符(@#$%^&*)</small></h6>
+    </ion-text>
+
+    <ion-item >
+      <ion-button type="submit" expand="full" style="width: 100%" [disabled]="codeForm.invalid">确认</ion-button>
+    </ion-item>
+  </form>
+</ion-content>

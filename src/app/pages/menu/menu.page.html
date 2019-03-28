@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-menu-button color="light" ></ion-menu-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title align="center">
+      首页
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="presentActionSheet()">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content no-padding >
+
+  <ion-card>
+    <ion-searchbar placeholder="请输入你的班级号"></ion-searchbar>
+
+    <ion-card-title>我的课程</ion-card-title>
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+    <ion-item>
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label>ion-item in a card, icon left, button right</ion-label>
+      <ion-button fill="outline" slot="end">View</ion-button>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+
+      <div calss="a3">
+        <ion-grid>
+
+          <ion-row class="quick-actions" size="4">
+            <ion-col >
+              <a class="shortcut" href="/idenity">
+                <img src="./assets/images/身份认证.png">
+                <div>身份认证</div>
+              </a>
+            </ion-col>
+            <ion-col >
+              <a class="shortcut" href="./home">
+                <img src="./assets/images/签到照.png">
+                <div>签到照</div>
+              </a>
+            </ion-col>
+            <ion-col >
+              <a class="shortcut" href="./home">
+                <img src="./assets/images/签到.png">
+                <div>签到</div>
+              </a>
+            </ion-col>
+            <ion-col >
+              <a class="shortcut" href="./home">
+                <img src="./assets/images/签到历史.png">
+                <div>签到历史</div>
+              </a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+
+          <ion-row class="quick-actions" size="4">
+            <ion-col >
+              <a class="shortcut" href="/addProduct">
+                <img src="./assets/images/请假.png">
+                <div>请假</div>
+              </a>
+            </ion-col>
+            <ion-col >
+              <a class="shortcut" href="./home">
+                <img src="./assets/images/我的假条.png">
+                <div>我的假条</div>
+              </a>
+            </ion-col>
+            <ion-col >
+              <a class="shortcut" href="./home">
+                <img src="./assets/images/校历.png">
+                <div>校历</div>
+              </a>
+            </ion-col>
+            <ion-col >
+              <a class="shortcut" href="./home">
+                <img src="./assets/images/学期.png">
+                <div>学期</div>
+              </a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+
+
+
+
+</ion-content>

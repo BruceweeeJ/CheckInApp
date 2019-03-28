@@ -1,0 +1,55 @@
+
+.less-equal{
+  color:var(--ion-color-success,#10dc60);
+}
+.greater{
+  color:var(--ion-color-danger,#f04141);
+}
+.quick-actions + .quick-actions{
+  margin-top: -1px;
+}
+.quick-action-item {
+  height: 25vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ececec;
+}
+.quick-action-item + .quick-action-item{
+  margin-left: -1px;
+}
+.shortcut{
+  text-align: center;
+}
+.shortcut ion-icon{
+  font-size: 48px;
+}
+.shortcut div{
+  color: var(--ion-color-dark);
+}
+a {
+  text-decoration: none;
+}
+.a1{
+  height:20%;
+  width:100%;
+}
+.al img{
+  width:100%;
+  height:100%;
+}
+.a2{
+  height:23%;
+  width:100%;
+  margin-top: 15px;
+  background-color: #f5f6f9;
+}
+.a3{
+  height:60%;
+  width:100%;
+  float:left;
+}
+.a4{
+  float: left;
+}
+
