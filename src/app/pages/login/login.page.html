@@ -1,0 +1,36 @@
+<ion-content no-padding>
+  <img  src="./assets/images/login.jpg" alt="">
+  <div padding-horizontal>
+    <form  #loginForm="ngForm" novalidate (ngSubmit)="onLogin()">
+
+      <ion-list padding-right no-margin>
+        <ion-item lines="none"></ion-item>
+        <ion-item>
+          <ion-label position="fixed">账 号</ion-label>
+          <ion-input name="username" type="text" placeholder="请输入您的手机号码" [(ngModel)]="params.username" required></ion-input>
+        </ion-item>
+        <ion-item margin-top>
+          <ion-label position="fixed">密码</ion-label>
+          <ion-input name="password" type="password" placeholder="您的不敢缺勤登录密码" [(ngModel)]="params.password" required></ion-input>
+        </ion-item>
+        <ion-item no-lines></ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="full" color="primary" (click)="onLogin(loginForm)" [disabled]="loginForm.invalid">登录</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="full" fill="outline" color="primary" [routerLink]="['/signup']">注册新账号</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button fill="clear" size="small" [routerLink]="['/forgot']">忘记密码？</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+
+</ion-content>

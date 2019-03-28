@@ -1,6 +1,9 @@
 {
   "name": "CheckInApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
-  "pro_id": "1c068829"
+  "pro_id": "1c068829",
+  "id": "1c068829"
 }
