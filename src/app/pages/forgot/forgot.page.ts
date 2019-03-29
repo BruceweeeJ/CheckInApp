@@ -53,7 +53,7 @@ export class ForgotPage implements OnInit {
         this.settime();
         this.code = this.AuthenticationService.createCode(6);
         console.log(this.code);
-        await this.http.post('https://open.ucpaas.com/ol/sms/sendsms', {
+        await this.http.post('http://localhost:8080/getCode', {
             "sid":"47892b61ea979b417ae61f8f1954d4e6",
             "token":"55b871f61437c08b2513b0980b7bb86e",
             "appid":"aa6511891c7f46459ef05e2f893eb3a3",
@@ -61,7 +61,11 @@ export class ForgotPage implements OnInit {
             "param": this.code,
             "mobile": this.params.usertel,
         }).toPromise().then((response: any) => {
-            console.log(response);
+            if (response) {
+                console.log("发送成功");
+            } else {
+                console.log("发送失败");
+            }
         });
     }
     // 验证码倒计时
