@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
   { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
-  { path: 'forgot', loadChildren: './pages/forgot/forgot.module#ForgotPageModule' },  { path: 'qrcode', loadChildren: './pages/qrcode/qrcode.module#QrcodePageModule' }
+  { path: 'forgot', loadChildren: './pages/forgot/forgot.module#ForgotPageModule' },  { path: 'qrcode', loadChildren: './pages/qrcode/qrcode.module#QrcodePageModule' },
+  { path: 'course', loadChildren: './pages/course/course.module#CoursePageModule' }
 
 ];
 
