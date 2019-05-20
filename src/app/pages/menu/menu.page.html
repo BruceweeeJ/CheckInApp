@@ -34,15 +34,15 @@
 
     <ion-searchbar placeholder="请输入你的班级号"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let course of Courses" detail="true">
+    <ion-item-sliding *ngFor="let c of course" detail="true">
       <ion-item (click) = "selectCourse(course)">
         <ion-avatar slot="start" class="ios hydrated">
           <img src="./assets/images/签到.png">
         </ion-avatar>
         <ion-label>
-          <h5 style="font-size: 7px">{{course.className}}</h5>
-          <h5 style="font-size: 7px">{{course.courseName}}</h5>
-          <p style="font-size: 5px">{{course.teacherName}}</p>
+          <h5 style="font-size: 7px">{{c.className}}</h5>
+          <h5 style="font-size: 7px">{{c.courseName}}</h5>
+          <p style="font-size: 5px">{{c.teachName}}</p>
         </ion-label>
       </ion-item>
       <ion-item-options side="end">
@@ -50,7 +50,7 @@
       </ion-item-options>
 
     </ion-item-sliding>
-
+    <ion-button (click)="click()">dianji</ion-button>
   </ion-list>
 
 </ion-content>

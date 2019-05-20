@@ -53,7 +53,7 @@ export class ForgotPage implements OnInit {
         this.settime();
         this.code = this.AuthenticationService.createCode(6);
         console.log(this.code);
-        await this.http.post(AppConfig.getDebugUrl() + '/getCode', {
+        await this.http.post(AppConfig.getDebugUrl() + '/sys/login/getCode', {
             "sid":"47892b61ea979b417ae61f8f1954d4e6",
             "token":"55b871f61437c08b2513b0980b7bb86e",
             "appid":"aa6511891c7f46459ef05e2f893eb3a3",
@@ -97,22 +97,34 @@ export class ForgotPage implements OnInit {
             * */
 
             let  result = 0;
+            let message = ' ';
             this.account.accountNumber = this.params.usertel;
             this.account.loginPassword = this.params.newpass;
-            console.log(this.account.accountNumber + "  " + this.account.loginPassword);
-            await this.http.post(AppConfig.getDebugUrl() + '/changePassword', {
-                'accountNumber': this.account.accountNumber, 'loginPassword': this.account.loginPassword,
-                'landingType': this.account.landingType
+            await this.http.post(AppConfig.getDebugUrl() + '/users/forget', {
+                'username': this.account.accountNumber, 'password': this.account.loginPassword,
+
             }).toPromise().then((response: any) => {
-                result = response;
+                result = 1;
+            }).catch(error => {
+
+                console.log(error.status);
+                console.log(error.error); // error message as string
+                console.log(error.headers);
+                message = error.error.message;
             });
             if (result == 1) {
                 const toast1 = await this.toastController.create({
-                    message: '注册成功',
+                    message: '密码修改成功',
                     duration: 2300
                 });
                 toast1.present();
                 this.router.navigateByUrl('\login');
+            } else {
+                const alert2 = await this.alertController.create({
+                    message: message,
+                    buttons: ['好的']
+                });
+                return await alert2.present();
             }
         } else {
             const alert2 = await this.alertController.create({

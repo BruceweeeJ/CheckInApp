@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import {AppConfig} from "../../model/appconfig";
 import { AlertController} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {LocalStorageService} from "../../services/local-storage-service.service";
 
 @Component({
   selector: 'app-login',
@@ -15,24 +16,32 @@ export class LoginPage implements OnInit {
         username: '',
         password: '',
     }
-    result: number;
   constructor(private http: HttpClient,
               private router: Router,
-              private alertController: AlertController) { }
+              private alertController: AlertController,
+              private localStorageService: LocalStorageService ) { }
 
   ngOnInit() {
   }
   async onLogin(form: NgForm) {
-    await this.http.post(AppConfig.getDebugUrl() + '/login', {
-        'accountNumber': this.params.username, 'loginPassword': this.params.password
-    }).toPromise().then((response: any) => {
-        this.result = response;
+    let result = 0;
+    let message = '';
+    await this.http.post(AppConfig.getDebugUrl() + '/sys/login/restful', {
+        'username': this.params.username, 'password': this.params.password
+    }).toPromise().then((response) => {
+        result = 1;
+    }).catch(error => {
+
+        console.log(error.status);
+        console.log(error.error); // error message as string
+        console.log(error.headers);
+        message = error.error.message;
     });
-    if (this.result) {
+    if (result) {
         this.router.navigateByUrl('\menu');
     } else {
         const alert1 = await this.alertController.create({
-            message: '账号密码输入错误',
+            message: message,
             buttons: ['好的']
         });
         return await alert1.present();

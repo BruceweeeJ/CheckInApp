@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+    newLeave: any = {};
     verifyCode: any = {
         verifyCodeTips: '获取验证码',
         totalTime: 60,
@@ -22,7 +23,7 @@ export class SignupPage implements OnInit {
         usertel: '',
         newpass: '',
         vcode: '',
-        sure_pwd: ''
+        sure_pwd: '',
     }
     account = {
         id: null,
@@ -36,9 +37,13 @@ export class SignupPage implements OnInit {
                 private http: HttpClient,
                 private toastController: ToastController,
                 private router: Router,
-                private alertController: AlertController) {}
+                private alertController: AlertController) {
+        this.newLeave.sqsj = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+    }
 
-    ngOnInit() {}
+    ngOnInit() {
+        console.log(this.newLeave.sqsj);
+    }
     async getCode() {
         const myreg = /^1[3|4|5|7|8][0-9]{9}$/;
         if (!myreg.test(this.params.usertel)) {
@@ -54,8 +59,8 @@ export class SignupPage implements OnInit {
         this.settime();
         this.code = this.AuthenticationService.createCode(6);
         console.log(this.code);
-        await this.http.post(AppConfig.getDebugUrl() + '/getCode', {
-            "sid":"47892b61ea979b417ae61f8f1954d4e6",
+        await this.http.post(AppConfig.getDebugUrl() + '/sys/login/getCode', {
+            "sid": "47892b61ea979b417ae61f8f1954d4e6",
             "token":"55b871f61437c08b2513b0980b7bb86e",
             "appid":"aa6511891c7f46459ef05e2f893eb3a3",
             "templateid":"447052",
@@ -96,23 +101,36 @@ export class SignupPage implements OnInit {
             /*
             *    存储用户信息
             * */
-
-            let  result = 0;
+            let result = 0;
+            let message = '';
             this.account.accountNumber = this.params.usertel;
             this.account.loginPassword = this.params.newpass;
-            await this.http.post(AppConfig.getDebugUrl() + '/addAccount', {
-                'accountNumber': this.account.accountNumber, 'loginPassword': this.account.loginPassword,
-                'landingType': this.account.landingType
+            await this.http.post(AppConfig.getDebugUrl() + '/users/add', {
+                'username': this.account.accountNumber, 'password': this.account.loginPassword,
+                'Date': this.newLeave.sqsj
             }).toPromise().then((response: any) => {
-                result = response;
+                console.log(response);
+                result = 1;
+            }).catch(error => {
+
+                console.log(error.status);
+                console.log(error.error); // error message as string
+                console.log(error.headers);
+                message = error.error.message;
             });
-            if (result == 1) {
+            if (result) {
                 const toast1 = await this.toastController.create({
                     message: '注册成功',
                     duration: 2300
                 });
                 toast1.present();
                 this.router.navigateByUrl('\login');
+            } else {
+                const alert2 = await this.alertController.create({
+                    message: message,
+                    buttons: ['好的']
+                });
+                return await alert2.present();
             }
         } else {
             const alert2 = await this.alertController.create({
