@@ -1,9 +1,38 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>addCourse</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-button [routerLink]="['/menu']" fill="clear" color="light">
+        <ion-icon name="arrow-back"></ion-icon>返回
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title align="center" style="color: white;">创建班课</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!--[(ngModel)]=""-->
+
+    <ion-item>
+      <ion-label >班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级</ion-label>
+      <ion-input style="color: #86888f" slot="end" name="class"  placeholder="未设置"  required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label >课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程</ion-label>
+      <ion-input style="color: #86888f" slot="end" name="subject"  placeholder="未设置"  required></ion-input>
+    </ion-item>
+  <ion-item>
+    <ion-label >学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期</ion-label>
+    <ion-input style="color: #86888f" slot="end" name="schoolTerm"  placeholder="未设置"  required></ion-input>
+  </ion-item>
+    <ion-item>
+      <ion-label >任教老师</ion-label>
+      <ion-input style="color: #86888f" slot="end" name="teacher"  value={{this.user.nickname}}  required></ion-input>
+    </ion-item>
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" fill="solid  " >创建</ion-button>
+  </ion-toolbar>
+</ion-footer>
