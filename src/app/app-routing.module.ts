@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'forgot', loadChildren: './pages/forgot/forgot.module#ForgotPageModule' },
   { path: 'qrcode', loadChildren: './pages/qrcode/qrcode.module#QrcodePageModule' },
   { path: 'course', loadChildren: './pages/course/course.module#CoursePageModule' },
-  { path: 'addCourse', loadChildren: './pages/add-course/add-course.module#AddCoursePageModule' },  { path: 'joincourse', loadChildren: './pages/joincourse/joincourse.module#JoincoursePageModule' }
+  { path: 'addCourse', loadChildren: './pages/add-course/add-course.module#AddCoursePageModule' },  { path: 'joincourse', loadChildren: './pages/joincourse/joincourse.module#JoincoursePageModule' },
+  { path: 'findcourse', loadChildren: './pages/findcourse/findcourse.module#FindcoursePageModule' }
 
 
 ];
