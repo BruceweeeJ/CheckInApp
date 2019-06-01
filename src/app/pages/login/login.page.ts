@@ -12,6 +12,7 @@ import {LocalStorageService} from "../../services/local-storage-service.service"
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+    user: any;
     params = {
         username: '',
         password: '',
@@ -38,6 +39,11 @@ export class LoginPage implements OnInit {
         message = error.error.message;
     });
     if (result) {
+        await this.http.get(AppConfig.getDebugUrl() + '/sys/login/current', {
+        }).toPromise().then((response) => {
+            this.user = response;
+        });
+        this.localStorageService.set('currentUser', this.user);
         this.router.navigateByUrl('\menu');
     } else {
         const alert1 = await this.alertController.create({

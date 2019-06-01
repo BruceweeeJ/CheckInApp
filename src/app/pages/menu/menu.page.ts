@@ -27,11 +27,11 @@ export class MenuPage implements OnInit {
     }
     async ionViewWillEnter() {
         console.log("进入菜单");
-        await this.http.get(AppConfig.getDebugUrl() + '/sys/login/current', {
-        }).toPromise().then((response) => {
-            this.user = response;
-        });
-        this.localStorageService.set('currentUser', this.user);
+        // await this.http.get(AppConfig.getDebugUrl() + '/sys/login/current', {
+        // }).toPromise().then((response) => {
+        //     this.user = response;
+        // });
+        this.user = this.localStorageService.get('currentUser', []);
         await this.http.post(AppConfig.getDebugUrl() + '/users/course', {
             'stuId': this.user.username
         }).toPromise().then((response) => {
@@ -48,7 +48,7 @@ export class MenuPage implements OnInit {
                 role: 'destructive',
                 icon: 'hammer',
                 handler: () => {
-                    console.log('Delete clicked');
+                    this.router.navigateByUrl('/addCourse');
                 }
             }, {
                 text: '使用班课号加入班课',
@@ -82,8 +82,7 @@ export class MenuPage implements OnInit {
                 setTimeout(() => {
                     event.target.complete();
                 }, 500);
-            }
-            else {
+            } else {
                 setTimeout(() => {
                     event.target.complete();
                 }, 500);
@@ -93,12 +92,14 @@ export class MenuPage implements OnInit {
         }
     }
     selectCourse(item: any) {
+        console.log(item);
         this.router.navigate(['/course'], {
             queryParams: {
-                courseId: item.courseId,
+                courseNumber: item.courseNumber,
                 courseName: item.courseName,
                 className: item.className,
-                teacherName: item.teacherName
+                teachName: item.teachName,
+                stuName: item.stuName
             }
         });
     }
@@ -109,5 +110,4 @@ export class MenuPage implements OnInit {
             console.log(response[0]);
         });
     }
-
 }

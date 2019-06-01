@@ -12,27 +12,57 @@
 
 <ion-content>
   <!--[(ngModel)]=""-->
-
+  <form  #codeForm="ngForm" novalidate (ngSubmit)="onInputCode()">
+  <ion-card>
+    <!--<ion-card-subtitle>Card Subtitle</ion-card-subtitle>-->
+    <ion-item>
+      <ion-card-title>必填项</ion-card-title>
+      <ion-icon name="key"></ion-icon>
+    </ion-item>
     <ion-item>
       <ion-label >班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级</ion-label>
-      <ion-input style="color: #86888f" slot="end" name="class"  placeholder="未设置"  required></ion-input>
+      <ion-input style="color: #86888f" slot="end" name="className"  placeholder="未设置" [(ngModel)]="course.className" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label >课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程</ion-label>
-      <ion-input style="color: #86888f" slot="end" name="subject"  placeholder="未设置"  required></ion-input>
+      <ion-input style="color: #86888f" slot="end" name="courseName"  placeholder="未设置"[(ngModel)]="course.courseName"  required></ion-input>
     </ion-item>
-  <ion-item>
-    <ion-label >学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期</ion-label>
-    <ion-input style="color: #86888f" slot="end" name="schoolTerm"  placeholder="未设置"  required></ion-input>
-  </ion-item>
     <ion-item>
-      <ion-label >任教老师</ion-label>
-      <ion-input style="color: #86888f" slot="end" name="teacher"  value={{this.user.nickname}}  required></ion-input>
+      <ion-label detail >学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期</ion-label>
+      <ion-input style="color: #86888f" slot="end" name="schoolTerm"  placeholder="未设置" [(ngModel)]="course.schoolTerm"  required></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label >任课老师</ion-label>
+      <ion-input style="color: #86888f" slot="end" name="teachName"  [(ngModel)]="course.teachName"  required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label >所属院校</ion-label>
+      <ion-input style="color: #86888f" slot="end" name="schoolName"  placeholder="未设置" [(ngModel)]="course.schoolName"  required></ion-input>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-card-title>班课详情</ion-card-title>
+      <ion-icon name="list"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label >学习要求</ion-label>
+      <ion-input style="color: #86888f" slot="end" name="requirement"  placeholder="未设置" [(ngModel)]="course.requirement"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label >学习进度</ion-label>
+      <ion-input style="color: #86888f" slot="end" name="progress"  placeholder="未设置" [(ngModel)]="course.progress"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label >考试安排</ion-label>
+      <ion-input style="color: #86888f" slot="end" name="schedule"  placeholder="未设置" [(ngModel)]="course.schedule"></ion-input>
+    </ion-item>
+  </ion-card>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-button expand="block" fill="solid" type="submit" [disabled]="codeForm.invalid" >创建</ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
 
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-button expand="block" fill="solid  " >创建</ion-button>
-  </ion-toolbar>
-</ion-footer>

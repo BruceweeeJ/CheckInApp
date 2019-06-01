@@ -35,7 +35,7 @@
     <ion-searchbar placeholder="请输入你的班级号"></ion-searchbar>
   <ion-list>
     <ion-item-sliding *ngFor="let c of course" detail="true">
-      <ion-item (click) = "selectCourse(course)">
+      <ion-item (click) = "selectCourse(c)">
         <ion-avatar slot="start" class="ios hydrated">
           <img src="./assets/images/签到.png">
         </ion-avatar>

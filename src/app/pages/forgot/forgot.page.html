@@ -22,11 +22,11 @@
 
     <ion-item style="font-size: small;width: 100%">
       <ion-label>密&nbsp;&nbsp;&nbsp;码</ion-label>
-      <ion-input name="password" type="password" [(ngModel)]="params.newpass"  #password="ngModel" placeholder="请输入新密码" pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$" required></ion-input>
+      <ion-input name="password" type="password" [(ngModel)]="params.newpass"  #password="ngModel" placeholder="请输入新密码" pattern="^(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[_#@]+$).{6,}$" required></ion-input>
     </ion-item>
     <ion-text color="danger" text-left *ngIf=" password.touched||submited ">
       <h6 [hidden]="!password.errors?.required"><small>密码不能为空</small></h6>
-      <h6 *ngIf="password.errors?.pattern"><small>长度至少为6个字符<br/>包含至少1个大写字母、1个小写字母、1个数字、1个特殊字符(@#$%^&*)</small></h6>
+      <h6 *ngIf="password.errors?.pattern"><small>长度至少为6个字符<br/>包含至少1个字母、1个数字</small></h6>
     </ion-text>
 
     <ion-item >
