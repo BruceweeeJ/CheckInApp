@@ -54,7 +54,7 @@ export class MenuPage implements OnInit {
                 text: '使用班课号加入班课',
                 icon: 'return-right',
                 handler: () => {
-                    console.log('Share clicked');
+                    this.router.navigateByUrl('/findcourse');
                 }
             },  {
                 text: '取消',
@@ -99,7 +99,8 @@ export class MenuPage implements OnInit {
                 courseName: item.courseName,
                 className: item.className,
                 teachName: item.teachName,
-                stuName: item.stuName
+                stuName: item.stuName,
+                stuId: item.stuId
             }
         });
     }

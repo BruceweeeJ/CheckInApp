@@ -17,8 +17,24 @@ export class CoursePage implements OnInit {
           console.log(this.course);
       });
   }
-
-  ngOnInit() {}
+  courseinfo: any;
+  checkin: any;
+  checkinlist: any;
     ionViewWillEnter() {
+        this.activeRoute.queryParams.subscribe((params: Params) => {
+            this.course = params;
+        });
+        // console.log(this.course);
+        this.courseinfo = '/courseinfo' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
+        this.checkin = '/checkin' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
+        this.checkinlist = '/checkinlist' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
+        console.log(this.href);
     }
+  ngOnInit() {
+      // console.log(this.href);
+    }
+    onClick() {
+        console.log('点击发射');
+    }
+
 }

@@ -1,9 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>joincourse</ion-title>
+  <ion-toolbar color="primary">
+    <ion-button [routerLink]="['/findcourse']" fill="clear" color="light" slot="start">
+      <ion-icon name="arrow-back"></ion-icon>查找班课
+    </ion-button>
+    <ion-title align="center" style="color: white;">加入班课</ion-title>
+
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-img  src="./assets/images/签到.png" style="width: 64%"></ion-img>
+        </ion-col>
+        <ion-col>
+          <ion-label style="font-size: larger">老师：林先生</ion-label>
+          <h6>课程：计算机网络</h6>
+          <h6>班级：计算机2班</h6>
+        </ion-col>
+      </ion-row>
 
+    </ion-grid>
+  </ion-card>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button expand="block" fill="solid" (click)="onJoin()" >加入班课</ion-button>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>

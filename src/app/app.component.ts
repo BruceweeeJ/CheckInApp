@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 import {MenuController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {LocalStorageService} from "./services/local-storage-service.service";
 
 
 @Component({
@@ -13,19 +14,24 @@ export class AppComponent {
     public appPages = [
         { title: '资金账户', url: '\home', icon: 'logo-yen' },
         { title: '手机橱窗', url: '\home', icon: 'cash' },
-        { title: '邀请有礼', url: '\home', icon: 'git-merge' },
-        { title: '开店论坛', url: '\home', icon: 'chatboxes' },
-        { title: '反馈建议', url: '\home', icon: 'create' },
-        { title: '帮助中心', url: '\home', icon: 'construct' },
     ];
-
+    public information = {
+        nickname: this.localStorageService.get('currentUser', []).nickname,
+        username: this.localStorageService.get('currentUser', []).username,
+    }
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
+        private localStorageService: LocalStorageService,
+        private zone: NgZone
     ) {
+        this.zone.run(() => {
+            // 要更新视图的代码
+           this.information.nickname = this.localStorageService.get('currentUser', []).nickname;
+           this.information.username = this.localStorageService.get('currentUser', []).username;
+        });
         this.initializeApp();
-        console.log(123);
     }
 
     initializeApp() {
