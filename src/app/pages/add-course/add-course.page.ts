@@ -14,6 +14,20 @@ import {Router} from '@angular/router';
 export class AddCoursePage implements OnInit {
   user: any;
   course: any;
+  public infos = [
+      {term: '2017-2018学年 上半学期'},
+      {term: '2017-2018学年 下半学期'},
+      {term: '2018-2019学年 上半学期'},
+      {term: '2018-2019学年 下半学期'},
+      {term: '2019-2020学年 上半学期'},
+      {term: '2019-2020学年 下半学期'},
+      {term: '2020-2021学年 上半学期'},
+      {term: '2020-2021学年 下半学期'},
+      {term: '2021-2022学年 上半学期'},
+      {term: '2021-2022学年 下半学期'},
+      {term: '2022-2023学年 上半学期'},
+      {term: '2022-2023学年 下半学期'},
+  ];
   constructor(
       private AuthenticationService: AuthenticationCodeService,
       private localStorageService: LocalStorageService,
@@ -24,7 +38,6 @@ export class AddCoursePage implements OnInit {
   ) {
     this.user = this.localStorageService.get('currentUser', []);
   }
-
   ngOnInit() {
     this.course = {
       courseNumber: this.AuthenticationService.createCode(6),

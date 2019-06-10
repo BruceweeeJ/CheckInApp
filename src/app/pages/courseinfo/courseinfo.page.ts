@@ -23,5 +23,7 @@ export class CourseinfoPage implements OnInit {
 
   ngOnInit() {
   }
-
+    onback() {
+        history.go(-1);
+    }
 }

@@ -28,8 +28,12 @@
       <ion-input style="color: #86888f" slot="end" name="courseName"  placeholder="未设置"[(ngModel)]="course.courseName"  required></ion-input>
     </ion-item>
     <ion-item>
+
       <ion-label detail >学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期</ion-label>
-      <ion-input style="color: #86888f" slot="end" name="schoolTerm"  placeholder="未设置" [(ngModel)]="course.schoolTerm"  required></ion-input>
+      <ion-select interface="popover"  [(ngModel)]="course.schoolTerm" name="schoolTerm" placeholder="未设置" required>
+        <ion-select-option *ngFor="let info of infos"   required>{{info.term}}</ion-select-option>
+      </ion-select>
+
     </ion-item>
     <ion-item>
       <ion-label >任课老师</ion-label>

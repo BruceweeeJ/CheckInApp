@@ -28,7 +28,6 @@ export class CoursePage implements OnInit {
         this.courseinfo = '/courseinfo' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
         this.checkin = '/checkin' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
         this.checkinlist = '/checkinlist' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
-        console.log(this.href);
     }
   ngOnInit() {
       // console.log(this.href);

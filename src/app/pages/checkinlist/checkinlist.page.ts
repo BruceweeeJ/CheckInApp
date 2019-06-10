@@ -11,5 +11,7 @@ export class CheckinlistPage implements OnInit {
 
   ngOnInit() {
   }
-
+    onback() {
+        history.go(-1);
+    }
 }
