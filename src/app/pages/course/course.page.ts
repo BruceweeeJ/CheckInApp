@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import {Params, ActivatedRoute} from '@angular/router';
+import {Params, ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-course',
   templateUrl: './course.page.html',
@@ -8,7 +8,8 @@ import {Params, ActivatedRoute} from '@angular/router';
 export class CoursePage implements OnInit {
   public course: any;
   constructor(public activeRoute: ActivatedRoute,
-              public zone: NgZone) {
+              public zone: NgZone,
+              public router: Router) {
       this.zone.run(() => {
           // 要更新视图的代码
           this.activeRoute.queryParams.subscribe((params: Params) => {
@@ -34,6 +35,15 @@ export class CoursePage implements OnInit {
     }
     onClick() {
         console.log('点击发射');
+    }
+    onCheckin() {
+        this.router.navigateByUrl(this.checkin);
+    }
+    onCheckinlist() {
+        this.router.navigateByUrl(this.checkinlist);
+    }
+    onCourseinfo() {
+        this.router.navigateByUrl(this.courseinfo);
     }
 
 }

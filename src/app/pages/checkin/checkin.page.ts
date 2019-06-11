@@ -14,4 +14,7 @@ export class CheckinPage implements OnInit {
   onback() {
       history.go(-1);
   }
+  oncheck() {
+  console.log(1);
+  }
 }
