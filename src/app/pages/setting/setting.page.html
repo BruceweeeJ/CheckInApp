@@ -1,9 +1,46 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>setting</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-button [routerLink]="['/menu']" fill="clear" color="light">
+        <ion-icon name="arrow-back"></ion-icon>返回
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title align="center" style="color: white;">设置</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list inset="true">
 
+    <ion-item href="/changpassword">
+      <ion-label>修改密码</ion-label>
+
+    </ion-item>
+  </ion-list>
+
+  <ion-list inset="true">
+    <ion-item href="/aboutus">
+      <ion-label>关于我们</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>联系客服</ion-label>
+      <ion-note slot="end"><a href="tel:13107698960">13107698960</a></ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>版本号:1.0</ion-label>
+      <ion-note slot="end">检测更新</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-list inset="true">
+    <ion-item (click)="onLogout()">
+      <ion-label>安全退出</ion-label>
+    </ion-item>
+
+  </ion-list>
+  <!-- 其他省略 -->
+  <div style="position: fixed;left: 0; right: 0; bottom:10px;" text-center>
+    <span>&copy;2019-2022 上课不要溜！</span>
+  </div>
 </ion-content>

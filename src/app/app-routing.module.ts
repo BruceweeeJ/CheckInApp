@@ -27,7 +27,9 @@ const routes: Routes = [
   { path: 'findcourse', loadChildren: './pages/findcourse/findcourse.module#FindcoursePageModule' },
   { path: 'courseinfo', loadChildren: './pages/courseinfo/courseinfo.module#CourseinfoPageModule' },
   { path: 'checkin', loadChildren: './pages/checkin/checkin.module#CheckinPageModule' },
-  { path: 'checkinlist', loadChildren: './pages/checkinlist/checkinlist.module#CheckinlistPageModule' },  { path: 'setting', loadChildren: './pages/setting/setting.module#SettingPageModule' }
+  { path: 'checkinlist', loadChildren: './pages/checkinlist/checkinlist.module#CheckinlistPageModule' },  { path: 'setting', loadChildren: './pages/setting/setting.module#SettingPageModule' },
+  { path: 'aboutus', loadChildren: './pages/aboutus/aboutus.module#AboutusPageModule' },
+  { path: 'changepassword', loadChildren: './pages/changepassword/changepassword.module#ChangepasswordPageModule' }
 
 
 
