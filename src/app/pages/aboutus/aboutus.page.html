@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>aboutus</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-button [routerLink]="['/menu']" fill="clear" color="light">
+        <ion-icon name="arrow-back"></ion-icon>返回
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title align="center" style="color: white;">关于我们</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>上课不要溜！</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      <p>组长：魏文诚180327067</p>
+      <p>组员：蔡  熠180327003</p>
+      <p>组员：郭灿阳180327102</p>
+      <p>组员：徐闽璋180327075</p>
+      <p>组员：庄天豪180327100</p>
+    </ion-card-content>
+  </ion-card>
+  <div style="position: fixed;left: 0; right: 0; bottom:10px;" text-center>
+    <span style="color: #86888f">&copy;2019-2022 上课不要溜！</span>
+  </div>
 </ion-content>
