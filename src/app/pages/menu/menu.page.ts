@@ -92,7 +92,6 @@ export class MenuPage implements OnInit {
         }
     }
     selectCourse(item: any) {
-        console.log(item);
         this.router.navigate(['/course'], {
             queryParams: {
                 courseNumber: item.courseNumber,

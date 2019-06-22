@@ -27,5 +27,8 @@ export class SettingPage implements OnInit {
   onLogout() {
     this.router.navigateByUrl('/login');
   }
+  back() {
+      history.go(-1);
+  }
 
 }

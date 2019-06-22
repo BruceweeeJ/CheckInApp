@@ -12,10 +12,8 @@ import {LocalStorageService} from "./services/local-storage-service.service";
 })
 export class AppComponent {
     public appPages = [
-        { title: '个人信息', url: '\home', icon: 'contact' },
-        { title: '用户反馈', url: '\home', icon: 'filing' },
-        { title: '关于我们', url: '\aboutus', icon: 'contacts' },
-        { title: '设置'    , url: '\setting', icon: 'cog' }
+        { title: '关于我们', url: '/aboutus', icon: 'contacts' },
+        { title: '设置'    , url: '/setting', icon: 'cog' }
     ];
     public information = {
         nickname: this.localStorageService.get('currentUser', []).nickname,

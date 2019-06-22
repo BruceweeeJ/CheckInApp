@@ -24,6 +24,7 @@ export class SignupPage implements OnInit {
         newpass: '',
         vcode: '',
         sure_pwd: '',
+        nickname: ''
     }
     account = {
         id: null,
@@ -107,7 +108,7 @@ export class SignupPage implements OnInit {
             this.account.loginPassword = this.params.newpass;
             await this.http.post(AppConfig.getDebugUrl() + '/users/add', {
                 'username': this.account.accountNumber, 'password': this.account.loginPassword,
-                'Date': this.newLeave.sqsj
+                'Date': this.newLeave.sqsj, 'nickname': this.params.nickname
             }).toPromise().then((response: any) => {
                 console.log(response);
                 result = 1;

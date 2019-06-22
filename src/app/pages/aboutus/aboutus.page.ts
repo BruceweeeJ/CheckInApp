@@ -11,5 +11,7 @@ export class AboutusPage implements OnInit {
 
   ngOnInit() {
   }
-
+    back() {
+        history.go(-1);
+    }
 }

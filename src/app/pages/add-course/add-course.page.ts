@@ -46,9 +46,10 @@ export class AddCoursePage implements OnInit {
       className: '',
       schoolName: '',
       schoolTerm: '',
-      requirement: '',
-      progress: '',
-      schedule: ''
+      requirement: '未设置',
+      progress: '未设置',
+      schedule: '未设置',
+      teachNumber: this.user.username
     };
   }
 
@@ -59,6 +60,7 @@ export class AddCoursePage implements OnInit {
           'courseNumber': this.course.courseNumber, 'courseName': this.course.courseName, 'teachName': this.course.teachName,
           'className': this.course.className, 'schoolName': this.course.schoolName, 'schoolTerm': this.course.schoolTerm,
           'requirement': this.course.requirement, 'progress': this.course.progress, 'schedule': this.course.schedule,
+          'teachNumber': this.course.teachNumber
 
       }).toPromise().then((response: any) => {
           result = response;
