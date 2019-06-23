@@ -43,6 +43,7 @@ export class CheckinlistPage implements OnInit {
       });
       this.checkList = this.response.result;
       this.length = this.checkList.length;
+      console.log(this.checkList[1].checkTime.split(' '));
   }
   ngOnInit() {
   }
