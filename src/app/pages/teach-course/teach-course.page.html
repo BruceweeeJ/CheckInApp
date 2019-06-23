@@ -22,12 +22,7 @@
           <p align="center">发起签到</p>
 
         </ion-col>
-        <ion-col>
-          <a (click)="onCheckinlist()">
-            <img src="./assets/images/签到历史.png">
-          </a>
-          <p align="center">签到历史</p>
-        </ion-col>
+
         <!--<ion-col>-->
         <!--<img src="./assets/images/请假.png">-->
         <!--<p align="center">请假</p>-->
@@ -47,8 +42,8 @@
       <p slot="end" style="color: #86888f">{{memberNumber}}人</p>
     </ion-item>
     <ion-list>
-      <ion-item-sliding *ngFor="let m of courseMember" detail="true">
-        <ion-item>
+      <ion-item-sliding *ngFor="let m of courseMember" >
+        <ion-item (click)="onCheckinlist(m.stuId)" detail>
           <ion-avatar slot="start" class="ios hydrated">
             <img src="./assets/images/身份认证.png">
           </ion-avatar>
@@ -56,10 +51,7 @@
             <h5>{{m.stuName}}</h5>
             <h6 style="color: #86888f">{{m.stuId}}</h6>
           </ion-label>
-          <!--<ion-label>-->
-          <!--<h5 align="end">以签到：</h5>-->
-          <!--<h5 align="end">n&nbsp;&nbsp;次&nbsp;&nbsp;&nbsp;&nbsp;</h5>-->
-          <!--</ion-label>-->
+          <p style="font-size: small;color: #0cd1e8" slot="end">签到记录</p>
 
         </ion-item>
       </ion-item-sliding>

@@ -38,9 +38,9 @@ export class TeachCoursePage implements OnInit {
         // this.course.courseNumber = this.activeRoute.snapshot.paramMap.get('courseNumber');
         // console.log(this.course.courseNumber);
         // console.log(this.course.courseNumber);
-        this.courseinfo = '/courseinfo' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
-        this.checkin = '/checkin' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
-        this.checkinlist = '/checkinlist' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
+        this.courseinfo = '/courseinfo' + '?courseNumber=' + this.course.courseNumber ;
+        this.checkin = '/raisecheck' + '?courseNumber=' + this.course.courseNumber;
+        this.checkinlist = '/checkinlist' + '?courseNumber=' + this.course.courseNumber;
         await this.http.post(AppConfig.getDebugUrl() + '/course/showMember', {
             'courseNumber': this.course.courseNumber
         }).toPromise().then((response: any) => {
@@ -57,8 +57,8 @@ export class TeachCoursePage implements OnInit {
     onCheckin() {
         this.router.navigateByUrl(this.checkin);
     }
-    onCheckinlist() {
-        this.router.navigateByUrl(this.checkinlist);
+    onCheckinlist(stuId: any) {
+        this.router.navigateByUrl(this.checkinlist + '&stuId=' + stuId);
     }
     onCourseinfo() {
         this.router.navigateByUrl(this.courseinfo);

@@ -1,9 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>raisecheck</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-button (click)="onback()" fill="clear" color="light">
+        <ion-icon name="arrow-back"></ion-icon>返回
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title align="center" style="color: white;">签到</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+          <a (click)="oncheck()">
+            <img src="./assets/images/checkin.jpg" align="center">
+          </a>
+          <p align="center">
+            <ion-button (click)="raiseCheck()" [disabled]="!verifyCode.disable">{{verifyCode.verifyCodeTips}}</ion-button>
+          </p>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
 
 </ion-content>
