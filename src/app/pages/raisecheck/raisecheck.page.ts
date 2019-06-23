@@ -13,9 +13,10 @@ import {Params, ActivatedRoute} from '@angular/router';
 export class RaisecheckPage implements OnInit {
     verifyCode: any = {
         verifyCodeTips: '点击发起签到',
-        totalTime: 10,
+        totalTime: 90,
         disable: true,
     }
+    checkTime: any;
     response: any;
     course: any;
   constructor(
@@ -34,17 +35,17 @@ export class RaisecheckPage implements OnInit {
       });
   }
   ngOnInit() {
+      console.log(this.checkTime);
   }
     async settime() {
         if (this.verifyCode.totalTime === 0) {
             this.verifyCode.verifyCodeTips = '点击发起签到';
             this.verifyCode.disable = true;
-            this.verifyCode.totalTime = 10;
+            this.verifyCode.totalTime = 90;
             // 签到结束后重新将课程中的tag标签改成0表示现在还未发起签到
             await this.http.post(AppConfig.getDebugUrl() + '/course/endCheck', {
                 'courseNumber': this.course.courseNumber
             }).toPromise().then((response: any) => {
-                console.log(response);
             });
             console.log('签到结束');
             return;
@@ -57,9 +58,10 @@ export class RaisecheckPage implements OnInit {
             }, 1000);
     }
   async raiseCheck() {
+      this.checkTime = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
       // 发起签到讲课程中的tag改成1表示现在处于签到时间
       await this.http.post(AppConfig.getDebugUrl() + '/course/raiseCheck', {
-          'courseNumber': this.course.courseNumber
+          'courseNumber': this.course.courseNumber, 'lastCheckTime': this.checkTime
       }).toPromise().then((response: any) => {
           this.response = response;
       });

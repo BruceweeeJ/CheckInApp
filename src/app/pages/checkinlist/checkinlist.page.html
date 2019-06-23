@@ -11,8 +11,14 @@
 </ion-header>
 
 <ion-content>
-  <p>历史签到记录：</p>
-  <ion-item>
-    qiandao
+  <ion-card style="font-size: larger">
+    <ion-item>历史签到记录<p slot="end">共{{length}}次</p></ion-item>
+  </ion-card>
+  <ion-item *ngFor="let c of checkList">
+    <p>{{c.checkTime}}签到</p>
+
+
+    状态：<p *ngIf="c.tag === 1" style="color: #0ec254">出勤</p>
+    <p *ngIf="c.tag == 0" style="color: #f04141">缺勤</p>
   </ion-item>
 </ion-content>

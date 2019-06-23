@@ -39,7 +39,7 @@ export class SignupPage implements OnInit {
                 private toastController: ToastController,
                 private router: Router,
                 private alertController: AlertController) {
-        this.newLeave.sqsj = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+        this.newLeave.sqsj = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
     }
 
     ngOnInit() {
