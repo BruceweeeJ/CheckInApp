@@ -14,6 +14,7 @@ import {LocalStorageService} from "../../services/local-storage-service.service"
 export class MenuPage implements OnInit {
     public course: any;
     public user: any;
+    public teachCourse: any;
     constructor(public actionSheetController: ActionSheetController,
                 public router: Router,
                 public location: Location,
@@ -21,21 +22,21 @@ export class MenuPage implements OnInit {
                 private http: HttpClient,
                 private localStorageService: LocalStorageService) {
         this.zone.run(() => {
-            // 要更新视图的代码
-            console.log("刷新");
+            this.user = this.localStorageService.get('currentUser', []);
         });
     }
     async ionViewWillEnter() {
         console.log("进入菜单");
-        // await this.http.get(AppConfig.getDebugUrl() + '/sys/login/current', {
-        // }).toPromise().then((response) => {
-        //     this.user = response;
-        // });
-        this.user = this.localStorageService.get('currentUser', []);
         await this.http.post(AppConfig.getDebugUrl() + '/users/course', {
             'stuId': this.user.username
         }).toPromise().then((response) => {
             this.course = response;
+        });
+        await this.http.post(AppConfig.getDebugUrl() + '/course/teachCourse', {
+            'teachNumber': this.user.username
+        }).toPromise().then((response) => {
+            console.log(response);
+            this.teachCourse = response;
         });
     }
 
@@ -100,6 +101,16 @@ export class MenuPage implements OnInit {
                 teachName: item.teachName,
                 stuName: item.stuName,
                 stuId: item.stuId
+            }
+        });
+    }
+    teacherCourse(item: any) {
+        this.router.navigate(['/teachcourse'], {
+            queryParams: {
+                courseNumber: item.courseNumber,
+                courseName: item.courseName,
+                className: item.className,
+                teachName: item.teachName,
             }
         });
     }

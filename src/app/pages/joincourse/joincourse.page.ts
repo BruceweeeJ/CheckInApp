@@ -13,6 +13,7 @@ import {LocalStorageService} from "../../services/local-storage-service.service"
 export class JoincoursePage implements OnInit {
     courseNumber: any;
     response: any;
+    user: any;
     course = {
         courseNumber: '',
         courseName: '',
@@ -36,6 +37,7 @@ export class JoincoursePage implements OnInit {
       this.activeRoute.queryParams.subscribe((params: Params) => {
           this.courseNumber = params['courseNumber'];
       });
+      this.user = this.localStorage.get('currentUser', []);
       console.log(this.courseNumber);
   }
   async ionViewWillEnter () {
@@ -57,10 +59,17 @@ export class JoincoursePage implements OnInit {
       }
   }
   async onJoin() {
-      const user = this.localStorage.get('currentUser',[]);
+      if (this.user.username === this.response.result.teachNumber) {
+          const alert = await this.alertController.create({
+              header: '提示',
+              message: '您是该课程老师，无需加入课程',
+              buttons: ['OK']
+          });
+          return await alert.present();
+      }
       await this.http.post(AppConfig.getDebugUrl() + '/course/joinCourse', {
           'courseNumber': this.courseNumber, 'courseName': this.course.courseName, 'teachName': this.course.teachName,
-          'stuName': user.nickname, 'stuId': user.username, 'className': this.course.className,
+          'stuName': this.user.nickname, 'stuId': this.user.username, 'className': this.course.className,
       }).toPromise().then((response) => {
           this.response = response;
           console.log(response);

@@ -4,33 +4,40 @@ import { HttpClient } from '@angular/common/http';
 import {AppConfig} from "../../model/appconfig";
 
 @Component({
-  selector: 'app-course',
-  templateUrl: './course.page.html',
-  styleUrls: ['./course.page.scss'],
+  selector: 'app-teach-course',
+  templateUrl: './teach-course.page.html',
+  styleUrls: ['./teach-course.page.scss'],
 })
-export class CoursePage implements OnInit {
-  public course: any;
-  constructor(public activeRoute: ActivatedRoute,
-              public zone: NgZone,
-              public router: Router,
-              public http: HttpClient
-              ) {
-      // this.zone.run(() => {
-      //     // 要更新视图的代码
-      //     this.activeRoute.queryParams.subscribe((params: Params) => {
-      //         this.course = params;
-      //     });
-      // });
-      this.activeRoute.queryParams.subscribe((params: Params) => {
-          this.course = params;
-      });
-  }
-  courseinfo: any;
-  checkin: any;
-  checkinlist: any;
-  courseMember: any;
-  memberNumber: any;
+export class TeachCoursePage implements OnInit {
+
+    public course: any;
+    constructor(public activeRoute: ActivatedRoute,
+                public zone: NgZone,
+                public router: Router,
+                public http: HttpClient
+    ) {
+        // this.zone.run(() => {
+        //     // 要更新视图的代码
+        //     this.activeRoute.queryParams.subscribe((params: Params) => {
+        //         this.course = params;
+        //     });
+        // });
+        this.activeRoute.queryParams.subscribe((params: Params) => {
+            this.course = params;
+        });
+    }
+    courseinfo: any;
+    checkin: any;
+    checkinlist: any;
+    courseMember: any;
+    memberNumber: any;
     async ionViewWillEnter() {
+        // this.activeRoute.queryParams.subscribe((params: Params) => {
+        //     this.course = params;
+        // });
+        // this.course.courseNumber = this.activeRoute.snapshot.paramMap.get('courseNumber');
+        // console.log(this.course.courseNumber);
+        // console.log(this.course.courseNumber);
         this.courseinfo = '/courseinfo' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
         this.checkin = '/checkin' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
         this.checkinlist = '/checkinlist' + '?courseNumber=' + this.course.courseNumber + '&stuId=' + this.course.stuId;
@@ -42,7 +49,7 @@ export class CoursePage implements OnInit {
             console.log(this.courseMember);
         });
     }
-  ngOnInit() {
+    ngOnInit() {
     }
     onClick() {
         console.log('点击发射');
@@ -56,5 +63,6 @@ export class CoursePage implements OnInit {
     onCourseinfo() {
         this.router.navigateByUrl(this.courseinfo);
     }
+
 
 }
